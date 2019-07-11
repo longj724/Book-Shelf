@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Books</title>
+    <link rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.css" />
+    <script src="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+    <script>
+        var firebaseConfig = {
+        apiKey: "AIzaSyCG15yEtWdjwp5xtpwsyXuwUkwiP2miYGA",
+        authDomain: "books-15585.firebaseapp.com",
+        databaseURL: "https://books-15585.firebaseio.com",
+        projectId: "books-15585",
+        storageBucket: "",
+        messagingSenderId: "858173025853",
+        appId: "1:858173025853:web:12499861bd3b2bb0"
+        };
+    
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</head>
+<body>
+    <h1>Book Tracker</h1>
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
+</body>
+<script src="main.js"></script>
+<script src="firebase.js"></script>
+</html>
