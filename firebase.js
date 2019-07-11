@@ -1,50 +1,16 @@
-// Initialize the FirebaseUI Widget using Firebase.
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
+var app_firebase = {};
+(function() {
+    var firebaseConfig = {
+        apiKey: "AIzaSyCG15yEtWdjwp5xtpwsyXuwUkwiP2miYGA",
+        authDomain: "books-15585.firebaseapp.com",
+        databaseURL: "https://books-15585.firebaseio.com",
+        projectId: "books-15585",
+        storageBucket: "",
+        messagingSenderId: "858173025853",
+        appId: "1:858173025853:web:12499861bd3b2bb0"
+    };
+    
+    firebase.initializeApp(firebaseConfig);
 
-ui.start('#firebaseui-auth-container', {
-    signInOptions: [
-      {
-        provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        signInMethod: firebase.auth.EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD
-      },
-    ],
-    // Other config options...
-});
-
-// Is there an email link sign-in?
-if (ui.isPendingRedirect()) {
-    ui.start('#firebaseui-auth-container', uiConfig);
-}
-  // This can also be done via:
-if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
-    ui.start('#firebaseui-auth-container', uiConfig);
-}
-
-var uiConfig = {
-    callbacks: {
-      signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-        // User successfully signed in.
-        // Return type determines whether we continue the redirect automatically
-        // or whether we leave that to developer to handle.
-        return true;
-      },
-      uiShown: function() {
-        // The widget is rendered.
-        // Hide the loader.
-        document.getElementById('loader').style.display = 'none';
-      }
-    },
-    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-    signInFlow: 'popup',
-    signInSuccessUrl: 'books.html',
-    signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
-      firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    ],
-    // Terms of service url.
-    tosUrl: '<your-tos-url>',
-    // Privacy policy url.
-    privacyPolicyUrl: '<your-privacy-policy-url>'
-};
-
-ui.start('#firebaseui-auth-container', uiConfig);
+    app_firebase = firebase;
+})()
