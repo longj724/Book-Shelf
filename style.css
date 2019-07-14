@@ -1,3 +1,7 @@
 body {
     background-image: "https://images-na.ssl-images-amazon.com/images/I/71ol1jY8qQL._SX425_.jpg"
 }
+
+#logout {
+    float: right;
+}
