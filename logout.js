@@ -14,11 +14,6 @@ var mainApp = {};
             emailVerified = user.emailVerified;
             idToken = user.uid;
 
-            console.log(name);
-            console.log(email);
-            console.log(emailVerified);
-            console.log(idToken);
-
             const usersRef = db.collection('users').doc(idToken);
 
             usersRef.get().then(function(doc) {
