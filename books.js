@@ -1,8 +1,3 @@
-(function() {
-    var db = appDatabase;
-    
-})();
-
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("add-book");
 var span = document.getElementsByClassName("close")[0];
@@ -28,3 +23,55 @@ window.onclick = function(event) {
   
 btn.addEventListener('click', toggleModal);
 span.addEventListener('click', closeModal);
+
+// Adding books to the database
+var db = appDatabase;
+
+function addBook() {
+    var title = document.getElementById('title').value;
+    var author = document.getElementById('author').value;
+    var status = document.getElementsByName('status');
+    var selectedStatus;
+
+    for (var i = 0, length = status.length; i < length; i++) {
+        if (status[i].checked) {
+            selectedStatus = status[i].value;
+            break;
+        }
+    }
+
+    function Book(title, author, read) {
+        this.title = title;
+        this.author = author;
+        this.read = function() {
+            if (read == 'Has Read') {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    var book = new Book(title, author, selectedStatus);
+
+    var testing = db.collection('users').doc(userData['id']);
+
+    testing.set({
+        works3: true
+    }, { merge: true })
+
+    db.collection('users').doc(userData['id']).collection('books').add({
+        title: book.title,
+        author: book.author,
+        status: book.read()
+    });
+
+    console.log("this works");
+}
+
+function doSomething() {
+    var modalDiv = document.querySelector(".modal-content");
+    var bookAdded = document.createElement('h3');
+    bookAdded.innerHTML = "Your book has been added";
+    modalDiv.appendChild(bookAdded);
+    return false;
+}

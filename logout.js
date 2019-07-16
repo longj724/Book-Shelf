@@ -1,5 +1,5 @@
 var mainApp = {};
-
+var userData = {};
 // Logout Users
 (function() {
     var firebase = appFirebase;
@@ -14,11 +14,12 @@ var mainApp = {};
             emailVerified = user.emailVerified;
             idToken = user.uid;
 
+            userData['id'] = idToken;
+
             const usersRef = db.collection('users').doc(idToken);
 
             usersRef.get().then(function(doc) {
                 if (doc.exists) {
-                    console.log("User already in the database");
                 } else {
                     db.collection("users").doc(idToken).set({
                         name: name,
