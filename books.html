@@ -19,7 +19,7 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            
+            <form onsubmit='return false;' id="add-book-form">
                 <div class="container">
                     <h1 id="modalHeader">Enter Book Information</h1>
                     <hr>
@@ -31,9 +31,9 @@
         
                     <input type="radio" name="status" value="Has Read" required> Has Read<br>
                     <input type="radio" name="status" value="Want to Read" required> Want to Read<br>
-                    <button onclick="addBook(); doSomething()" class="add-book-btn">Add</button>
+                    <button class="add-book-btn">Add</button>
                 </div>
-            
+            </form>
         </div>
     </div>
 </body>

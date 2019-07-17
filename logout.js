@@ -21,14 +21,14 @@ var userData = {};
             usersRef.get().then(function(doc) {
                 if (doc.exists) {
                 } else {
-                    db.collection("users").doc(idToken).set({
+                    db.collection('users').doc(idToken).set({
                         name: name,
                         email: email,
                     })
                 }
             });
         } else {
-            window.location.replace("main.html");
+            window.location.replace('main.html');
         }
     });
 
