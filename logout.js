@@ -1,6 +1,6 @@
 var mainApp = {};
 var userData = {};
-// Logout Users
+// Logout Users and add users to database on new login
 (function() {
     var firebase = appFirebase;
     var db = appDatabase;

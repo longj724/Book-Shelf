@@ -29,13 +29,9 @@ var db = appDatabase;
 
 function checkValidity() {
     var form = document.getElementById('add-book-form').elements;
-    console.log(form[0].value);
-    console.log(form[1].value);
-    console.log(form[2].value);
 
     for (let i = 0; i < form.length - 1; i++) {
         if (form[i].value === '') {
-            console.log(i + 'makes it not work');
             return false;
         }
     }
@@ -78,22 +74,50 @@ function addBook() {
 }
 
 function confirmBookAdded() {
-    console.log('function is triggered');
     if (!checkValidity()) { return false };
 
     var modalDiv = document.querySelector('.modal-content');
     var bookAdded = document.createElement('h3');
     bookAdded.innerHTML = 'Your book has been added';
     modalDiv.appendChild(bookAdded);
-    console.log('the book was added');
 }
 
 var bookForm = document.getElementById('add-book-form');
 var addBookBtn = document.querySelector('.add-book-btn');
 
-function doSomething() {
-    return false;
-}
-
 addBookBtn.addEventListener('click', addBook);
 addBookBtn.addEventListener('click', confirmBookAdded);
+
+// Displaying Books
+function renderBooks(doc) {
+    console.log(doc.data().title);
+}
+
+var ud = userData;
+console.log(ud);
+(function() {
+    let myPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (ud['id']) {
+                resolve(ud['id']);
+            } else {
+                reject('Error in retrieving the users books');
+            }
+        }, 10000)
+    })
+
+    myPromise.then((resolve) => {
+        return resolve;
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+    .then((result) => {
+        var books = db.collection('users').doc(result).collection('books');
+        books.get().then((snapshot) => {
+            snapshot.docs.forEach((doc) => {
+            renderBooks(doc);
+            })
+        })
+    })
+})()
