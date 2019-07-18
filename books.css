@@ -44,6 +44,21 @@ h2 {
   background-color: RoyalBlue;
 }
 
+#delete-book {
+  float: left;
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+#delete-book:hover {
+  background-color: RoyalBlue;
+}
+
 #my-books {
   display: inline;
 }
@@ -148,7 +163,7 @@ hr {
 }
 
 #container .item {
-  flex: 1 0 200px;
+  flex: 0 0 200px;
   box-sizing: border-box;
   color: #171e42;
   padding: 10px;

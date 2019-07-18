@@ -89,11 +89,12 @@ addBookBtn.addEventListener('click', addBook);
 addBookBtn.addEventListener('click', confirmBookAdded);
 
 // Displaying Books
-function renderBooks(doc) {
+function renderBooks(doc, userId) {
     let container = document.getElementById('container');
     let loadSymbol = document.getElementById('loading')
     let item = document.createElement('div');
     let info = document.createElement('div');
+    let cross = document.createElement('div');
 
     let title  = document.createElement('p');
     let author = document.createElement('p');
@@ -106,6 +107,7 @@ function renderBooks(doc) {
     cover.src = 'assets/book-img.jpg';
     cover.setAttribute('id', 'cover');
 
+    cross.innerHTML = 'x';
     title.innerHTML = 'Title: ' + doc.data().title;
     author.innerHTML = 'Author: ' + doc.data().author;
     if (doc.data().status === true) {
@@ -121,9 +123,18 @@ function renderBooks(doc) {
     info.appendChild(status);
 
     item.classList.add('item');
+    item.setAttribute('data-id', doc.id);
+    item.appendChild(cross);
     item.appendChild(cover);
     item.appendChild(info);
     container.appendChild(item);
+
+    // Deleting data
+    cross.addEventListener('click', (e) => {
+        e.stopPropagation();
+        let id = e.target.parentElement.getAttribute('data-id');
+        db.collection('users').doc(userId).collection('books').doc(id).delete();
+    })
 }
 
 var ud = userData;
@@ -146,10 +157,19 @@ var ud = userData;
     })
     .then((result) => {
         db.collection('users').doc(result).collection('books')
-            .get().then((snapshot) => {
-                snapshot.docs.forEach((doc) => {
-                    renderBooks(doc);
+            .onSnapshot(snapshot => {
+                let changes = snapshot.docChanges();
+                changes.forEach(change => {
+                    if (change.type === 'added') {
+                        renderBooks(change.doc, result);
+                    } else if (change.type === 'removed') {
+                        let container = document.getElementById('container');
+                        let deletedBook = container.querySelector('[data-id=' + change.doc.id + ']');
+                        container.removeChild(deletedBook);
+                    }
                 })
             })
     })
 })()
+
+// Deleting Books
