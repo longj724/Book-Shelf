@@ -2,10 +2,7 @@ body {
     background-image: url("https://images-na.ssl-images-amazon.com/images/I/71ol1jY8qQL._SX425_.jpg");
 }
 
-#logout {
-    float: right;
-}
-
 #home-title {
     color: white;
+    font-family: 'Catamaran';
 }

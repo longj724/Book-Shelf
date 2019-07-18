@@ -106,12 +106,12 @@ function renderBooks(doc) {
     cover.src = 'assets/book-img.jpg';
     cover.setAttribute('id', 'cover');
 
-    title.innerHTML = doc.data().title;
-    author.innerHTML = doc.data().author;
+    title.innerHTML = 'Title: ' + doc.data().title;
+    author.innerHTML = 'Author: ' + doc.data().author;
     if (doc.data().status === true) {
-        status.innerHTML = 'Read';
+        status.innerHTML = 'Status: Read';
     } else {
-        status.innerHTML = 'Want to Read';
+        status.innerHTML = 'Status: Want to Read';
     }
 
     info.appendChild(title);

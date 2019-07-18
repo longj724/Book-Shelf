@@ -7,7 +7,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="books.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    
+    <link href='https://fonts.googleapis.com/css?family=Catamaran' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+
     <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
@@ -15,9 +17,11 @@
     <script src="logout.js"></script>
 </head>
 <body>
-    <h2>My Books</h2>
-    <button id="add-book">Add Book</button>
-    <button id="logout" onclick="mainApp.logOut()">logOut</button>
+    <div id="nav">
+        <h2 id="my-books">My Books</h2>
+        <button class="fas fa-plus" id="add-book">Add Book</button>
+        <button class="fas fa-sign-out-alt" id="logout" onclick="mainApp.logOut()">Sign Out</button>
+    </div>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
