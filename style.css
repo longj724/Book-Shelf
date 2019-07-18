@@ -1,8 +1,16 @@
 body {
     background-image: url("https://images-na.ssl-images-amazon.com/images/I/71ol1jY8qQL._SX425_.jpg");
+    text-align: center;
 }
 
 #home-title {
     color: white;
     font-family: 'Catamaran';
+}
+
+.signIn {
+    left: 50%;
+    top: 50%;
+    margin-left: -10px;
+    margin-right: -10px;
 }
