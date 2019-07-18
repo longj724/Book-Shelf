@@ -91,10 +91,40 @@ addBookBtn.addEventListener('click', confirmBookAdded);
 // Displaying Books
 function renderBooks(doc) {
     console.log(doc.data().title);
+    let container = document.getElementById('container');
+    let item = document.createElement('div');
+    let info = document.createElement('div');
+
+    let title  = document.createElement('p');
+    let author = document.createElement('p');
+    let status = document.createElement('p');
+    let cover = document.createElement('img');
+
+    title.classList.add('title');
+    author.classList.add('author');
+    status.classList.add('author');
+    cover.src = 'assets/book-img.jpg';
+    cover.setAttribute('id', 'cover');
+
+    title.innerHTML = doc.data().title;
+    author.innerHTML = doc.data().author;
+    if (doc.data().status === true) {
+        status.innerHTML = 'Read';
+    } else {
+        status.innerHTML = 'Want to Read';
+    }
+
+    info.appendChild(title);
+    info.appendChild(author);
+    info.appendChild(status);
+
+    item.classList.add('item');
+    item.appendChild(cover);
+    item.appendChild(info);
+    container.appendChild(item);
 }
 
 var ud = userData;
-console.log(ud);
 (function() {
     let myPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -113,11 +143,12 @@ console.log(ud);
         console.log(err);
     })
     .then((result) => {
-        var books = db.collection('users').doc(result).collection('books');
-        books.get().then((snapshot) => {
-            snapshot.docs.forEach((doc) => {
-            renderBooks(doc);
+        db.collection('users').doc(result).collection('books')
+            .get().then((snapshot) => {
+                snapshot.docs.forEach((doc) => {
+                    renderBooks(doc);
+                })
             })
-        })
     })
+    console.log('finished');
 })()
