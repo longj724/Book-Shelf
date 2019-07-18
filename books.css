@@ -6,6 +6,16 @@ h2 {
   font-family: 'Catamaran';
 }
 
+#loading {
+  background: url('assets/Spinner-3s-200px.gif') no-repeat center center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9999999;
+}
+
 #logout {
   float: right;
   background-color: DodgerBlue;

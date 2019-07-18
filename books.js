@@ -90,8 +90,8 @@ addBookBtn.addEventListener('click', confirmBookAdded);
 
 // Displaying Books
 function renderBooks(doc) {
-    console.log(doc.data().title);
     let container = document.getElementById('container');
+    let loadSymbol = document.getElementById('loading')
     let item = document.createElement('div');
     let info = document.createElement('div');
 
@@ -114,6 +114,8 @@ function renderBooks(doc) {
         status.innerHTML = 'Status: Want to Read';
     }
 
+    loadSymbol.setAttribute('style', 'display: none;')
+
     info.appendChild(title);
     info.appendChild(author);
     info.appendChild(status);
@@ -126,7 +128,7 @@ function renderBooks(doc) {
 
 var ud = userData;
 (function() {
-    let myPromise = new Promise((resolve, reject) => {
+    let getUserId = new Promise((resolve, reject) => {
         setTimeout(() => {
             if (ud['id']) {
                 resolve(ud['id']);
@@ -136,7 +138,7 @@ var ud = userData;
         }, 10000)
     })
 
-    myPromise.then((resolve) => {
+    getUserId.then((resolve) => {
         return resolve;
     })
     .catch((err) => {
@@ -150,5 +152,4 @@ var ud = userData;
                 })
             })
     })
-    console.log('finished');
 })()
