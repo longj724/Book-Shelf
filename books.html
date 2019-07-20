@@ -18,18 +18,17 @@
 </head>
 <body>
     <div id="nav">
-        <h2 id="my-books">My Books</h2>
         <button class="fas fa-plus" id="add-book">Add Book</button>
-        <button class="fas fa-trash" id="delete-book">Delete Book</button>
+        <h2 id="my-books">My Books</h2>
         <button class="fas fa-sign-out-alt" id="logout" onclick="mainApp.logOut()">Sign Out</button>
     </div>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
+            <h1 id="modalHeader">Enter Book Information</h1>
+            <hr>
             <form onsubmit='return false;' id="add-book-form">
                 <div class="container">
-                    <h1 id="modalHeader">Enter Book Information</h1>
-                    <hr>
                     <label for="title"><b>Title</b></label>
                     <input id="title" type="text" placeholder="Title" name="title" required><br>
         
