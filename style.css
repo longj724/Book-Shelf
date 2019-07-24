@@ -1,6 +1,7 @@
 body {
-    background-image: url("https://images-na.ssl-images-amazon.com/images/I/71ol1jY8qQL._SX425_.jpg");
+    background-color:#e62739; 
     text-align: center;
+    display: grid;
 }
 
 #home-title {
@@ -13,4 +14,27 @@ body {
     top: 50%;
     margin-left: -10px;
     margin-right: -10px;
+}
+
+#book-logo {
+    color: #6ed3cf;
+    width: 30vmin;
+    
+}
+
+#sign-in-btn {
+    background-color: #4740C4;
+    border-color: #4740C4;
+    border-radius: 10px;
+    color: white;
+    height: 5vmin;
+}
+
+#main-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
 }

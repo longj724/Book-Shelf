@@ -94,7 +94,8 @@ function renderBooks(doc, userId) {
     let loadSymbol = document.getElementById('loading')
     let item = document.createElement('div');
     let info = document.createElement('div');
-    let cross = document.createElement('div');
+    let crossBox = document.createElement('div')
+    let cross = document.createElement('i');
 
     let title  = document.createElement('p');
     let author = document.createElement('p');
@@ -107,7 +108,8 @@ function renderBooks(doc, userId) {
     cover.src = 'assets/book-img.jpg';
     cover.setAttribute('id', 'cover');
 
-    cross.innerHTML = 'x';
+    cross.setAttribute('class', 'fas fa-trash')
+    crossBox.appendChild(cross)
     title.innerHTML = 'Title: ' + doc.data().title;
     author.innerHTML = 'Author: ' + doc.data().author;
     if (doc.data().status === true) {
@@ -124,7 +126,7 @@ function renderBooks(doc, userId) {
 
     item.classList.add('item');
     item.setAttribute('data-id', doc.id);
-    item.appendChild(cross);
+    item.appendChild(crossBox);
     item.appendChild(cover);
     item.appendChild(info);
     container.appendChild(item);

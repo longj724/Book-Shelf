@@ -1,11 +1,12 @@
 body {
-  background-color: #DCDCDC;
+  background-color: white;
   margin: 0;
   padding: 0;
 }
 
 h2 {
   font-family: 'Catamaran';
+  color: white;
 }
 
 #loading {
@@ -21,7 +22,7 @@ h2 {
 #logout {
   float: right;
   margin-right: 15px;
-  background-color: DodgerBlue;
+  background-color: #4740C4;
   border: none;
   color: white;
   font-size: 16px;
@@ -36,7 +37,7 @@ h2 {
 #add-book {
   float: left;
   margin-left: 15px;
-  background-color: DodgerBlue;
+  background-color: #4740C4;
   border: none;
   color: white;
   font-size: 16px;
@@ -74,7 +75,7 @@ h2 {
   justify-content: space-between;
   align-items: center;
   flex-wrap: flex;
-  background-color: red;
+  background-color: #e62739;
 }
 
 /* Modal Box */
