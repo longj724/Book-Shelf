@@ -105,6 +105,11 @@ h2 {
   border-radius: 0.5rem; 
   overflow: auto;
 }
+
+#modalHeader {
+  font-family: 'Catamaran';
+}
+
 .close {
     float: right;
     width: 1.5rem;
@@ -149,10 +154,11 @@ hr {
 
 /* Set a style for the submit/register button */
 .add-book-btn {
-  background-color: #4CAF50;
+  background-color: #4740C4;
+  border-radius: 5px;
   color: white;
   padding: 16px 20px;
-  margin: 8px 0;
+  margin-top: 8px;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -169,7 +175,12 @@ hr {
   }
 }
 
-/* Book Styling */
+#add-book-confirm {
+  text-align: center;
+  font-family: 'Open Sans'
+}
+
+/* Styling for books */
 #container {
   display: flex;
 	flex-wrap: wrap;

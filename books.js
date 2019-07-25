@@ -79,6 +79,7 @@ function confirmBookAdded() {
     var modalDiv = document.querySelector('.modal-content');
     var bookAdded = document.createElement('h3');
     bookAdded.innerHTML = 'Your book has been added';
+    bookAdded.setAttribute('id', 'add-book-confirm')
     modalDiv.appendChild(bookAdded);
 }
 
