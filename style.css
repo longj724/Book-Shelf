@@ -10,24 +10,15 @@ body {
 }
 
 .signIn {
-    left: 50%;
-    top: 50%;
-    margin-left: -10px;
-    margin-right: -10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 #book-logo {
     color: #6ed3cf;
-    width: 30vmin;
     
-}
-
-#sign-in-btn {
-    background-color: #4740C4;
-    border-color: #4740C4;
-    border-radius: 10px;
-    color: white;
-    height: 5vmin;
 }
 
 #main-info {
@@ -37,4 +28,33 @@ body {
     align-items: center;
     text-align: center;
     min-height: 100vh;
+}
+
+a.button1 {
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #4740C4;
+    margin:0 0.3em 0.3em 0;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color: #FFFFFF;
+    background-color: #4740C4;
+    text-align:center;
+    transition: all 0.2s;
+    margin-top: 15px;
+}
+a.button1:hover{
+    color: #4740C4;
+    background-color:#FFFFFF;
+    border-color: #ffffff;
+}
+
+@media all and (max-width:30em) {
+    a.button1{
+        display:block;
+        margin:0.4em auto;
+    }
 }

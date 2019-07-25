@@ -126,13 +126,13 @@ function renderBooks(doc, userId) {
 
     item.classList.add('item');
     item.setAttribute('data-id', doc.id);
-    item.appendChild(crossBox);
     item.appendChild(cover);
     item.appendChild(info);
+    item.appendChild(crossBox);
     container.appendChild(item);
 
     // Deleting data
-    cross.addEventListener('click', (e) => {
+    crossBox.addEventListener('click', (e) => {
         e.stopPropagation();
         let id = e.target.parentElement.getAttribute('data-id');
         db.collection('users').doc(userId).collection('books').doc(id).delete();
