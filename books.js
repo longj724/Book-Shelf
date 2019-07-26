@@ -106,8 +106,8 @@ function renderBooks(doc, userId) {
     title.classList.add('title');
     author.classList.add('author');
     status.classList.add('author');
-    cover.src = 'assets/book-img.jpg';
-    cover.setAttribute('id', 'cover');
+    cover.setAttribute('class', 'cover');
+    cover.setAttribute('id', doc.id + 1);
 
     cross.setAttribute('class', 'fas fa-trash')
     crossBox.appendChild(cross)
@@ -131,6 +131,9 @@ function renderBooks(doc, userId) {
     item.appendChild(info);
     item.appendChild(crossBox);
     container.appendChild(item);
+
+
+    getBookCover(doc.data().title, doc.id + 1)
 
     // Deleting data
     cross.addEventListener('click', (e) => {
@@ -176,4 +179,26 @@ var ud = userData;
     })
 })()
 
-// Deleting Books
+function getBookCover(title, imageId) {
+    // try {
+    //     let image = document.getElementById(imageId)
+    //     let data = await fetch('https://www.googleapis.com/books/v1/volumes?q=' + title)
+    //     let JSONdata = await data.json()
+    //     let coverSrc = await data.items[0].volumeInfo.imageLinks.thumbnail
+    //     image.src = coverSrc
+    // } catch (error) {
+    //     let image = document.getElementById(imageId)
+    //     image.src = 'assets/book-img.jpg'
+    // }
+    
+    let image = document.getElementById(imageId)
+    fetch('https://www.googleapis.com/books/v1/volumes?q=' + title)
+    .then((response) => {
+        return response.json()
+    }).then((response) => {
+        image.src = response.items[0].volumeInfo.imageLinks.thumbnail
+    }).catch((error) => {
+        image.src = 'assets/book-img.jpg'
+    })
+}
+
