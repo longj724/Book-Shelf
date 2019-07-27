@@ -4,9 +4,15 @@ body {
   padding: 0;
 }
 
-h2 {
+#my-books {
   font-family: 'Catamaran';
   color: white;
+}
+
+.book-status-header {
+  color: #4740C4;
+  margin-left: 1.5vw;
+  text-decoration: underline;
 }
 
 #loading {
@@ -166,14 +172,14 @@ hr {
 }
 
 /* Styling for books */
-#container {
+#container-read, #container-want-read {
   display: flex;
 	flex-wrap: wrap;
 	margin-left: -10px;
 	margin-top: 10px;
 }
 
-#container .item {
+#container-read .item, #container-want-read .item {
   flex: 0 0 200px;
   box-sizing: border-box;
   color: #171e42;

@@ -27,6 +27,7 @@ span.addEventListener('click', closeModal);
 // Adding books to the database
 var db = appDatabase;
 
+// Check validity of the form
 function checkValidity() {
     var form = document.getElementById('add-book-form').elements;
 
@@ -91,7 +92,12 @@ addBookBtn.addEventListener('click', confirmBookAdded);
 
 // Displaying Books
 function renderBooks(doc, userId) {
-    let container = document.getElementById('container');
+    var container;
+    if (doc.data().status) {
+        container = document.getElementById('container-read');
+    } else {
+        container = document.getElementById('container-want-read')
+    }
     let loadSymbol = document.getElementById('loading')
     let item = document.createElement('div');
     let info = document.createElement('div');
@@ -179,6 +185,7 @@ var ud = userData;
     })
 })()
 
+// Getting the book cover
 function getBookCover(title, imageId) {
     let image = document.getElementById(imageId)
     fetch('https://www.googleapis.com/books/v1/volumes?q=' + title)
