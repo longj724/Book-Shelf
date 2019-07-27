@@ -132,7 +132,7 @@ function renderBooks(doc, userId) {
     item.appendChild(crossBox);
     container.appendChild(item);
 
-
+    // Add book cover
     getBookCover(doc.data().title, doc.id + 1)
 
     // Deleting data
@@ -180,17 +180,6 @@ var ud = userData;
 })()
 
 function getBookCover(title, imageId) {
-    // try {
-    //     let image = document.getElementById(imageId)
-    //     let data = await fetch('https://www.googleapis.com/books/v1/volumes?q=' + title)
-    //     let JSONdata = await data.json()
-    //     let coverSrc = await data.items[0].volumeInfo.imageLinks.thumbnail
-    //     image.src = coverSrc
-    // } catch (error) {
-    //     let image = document.getElementById(imageId)
-    //     image.src = 'assets/book-img.jpg'
-    // }
-    
     let image = document.getElementById(imageId)
     fetch('https://www.googleapis.com/books/v1/volumes?q=' + title)
     .then((response) => {
