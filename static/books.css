@@ -17,7 +17,7 @@ body {
 }
 
 #loading {
-  background: url('assets/Spinner-3s-200px.gif') no-repeat center center;
+  background: url(./images/Spinner-3s-200px.gif) no-repeat center center;
   position: absolute;
   top: 0;
   left: 0;

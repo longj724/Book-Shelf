@@ -43,6 +43,7 @@ function checkValidity() {
     return true;
 }
 
+// Adding a new book
 function addBook() {
     if (!checkValidity()) { return false };
 
@@ -198,7 +199,7 @@ function getBookCover(title, imageId) {
     }).then((response) => {
         image.src = response.items[0].volumeInfo.imageLinks.thumbnail
     }).catch((error) => {
-        image.src = 'assets/book-img.jpg'
+        image.src = './static/images/book-img.jpg'
     })
 }
 
