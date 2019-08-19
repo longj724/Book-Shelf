@@ -5,8 +5,12 @@ var span = document.getElementsByClassName('close')[0];
 // When the user clicks on the button, open the modal 
 var photoTaken = false;
 function toggleModal() {
-  modal.style.display = 'block';
-  var modalContent = document.querySelector('.modal-content');
+    modal.style.display = 'block';
+    document.getElementById('title').value= "";
+    document.getElementById('author').value = "";
+    var container = document.querySelector('.container');
+    var bookAdded = document.getElementById('#add-book-confirm')
+    container.removeChild(bookAdded);
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -176,8 +180,8 @@ var ud = userData;
                     if (change.type === 'added') {
                         renderBooks(change.doc, result);
                     } else if (change.type === 'removed') {
-                        let container = document.getElementById('container');
-                        let deletedBook = container.querySelector('[data-id=' + change.doc.id + ']');
+                        let container = document.querySelector('.book-container');
+                        let deletedBook = document.querySelector('[data-id=' + change.doc.id + ']');
                         container.removeChild(deletedBook);
                     }
                 })

@@ -10,6 +10,7 @@ body {
 }
 
 .book-status-header {
+  font-family: 'Catamaran';
   color: #4740C4;
   margin-left: 1.5vw;
   text-decoration: underline;
