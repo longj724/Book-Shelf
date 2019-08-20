@@ -10,18 +10,28 @@ function toggleModal() {
     document.getElementById('author').value = "";
     var container = document.querySelector('.container');
     var bookAdded = document.getElementById('#add-book-confirm')
-    container.removeChild(bookAdded);
+    if (bookAdded) { container.removeChild(bookAdded); }
+}
+
+function clearSearchFilter() {
+    let filterList = document.getElementById('potential-titles');
+    let filterListNodes = document.getElementById('potential-titles').childNodes;
+    while (filterListNodes.length != 0) {
+        filterList.removeChild(filterListNodes[0]);
+    }
 }
 
 // When the user clicks on <span> (x), close the modal
 function closeModal() {
     modal.style.display = 'none';
+    clearSearchFilter();
 }
   
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target == modal) {
+    if (event.target === modal) {
         modal.style.display = 'none';
+        clearSearchFilter();
     }
 }
   
@@ -203,3 +213,35 @@ function getBookCover(title, imageId) {
     })
 }
 
+// Fills in search box once title is selected
+function fillInSearchBox(info) {
+    let searchBox = document.getElementById('title');
+    info = info.replace(/-/g, ' ');
+    searchBox.value = info;
+    clearSearchFilter();
+}
+
+// Searching for books
+var titleInput = document.getElementById('title')
+function filterBookSearch() {
+    let filter = titleInput.value;
+    let filterList = document.getElementById('potential-titles');
+    fetch('https://www.googleapis.com/books/v1/volumes?q=' + filter)
+    .then((response) => {
+        return response.json();
+    }).then((response) => {
+        clearSearchFilter();
+        for (let i = 0; i < 5; i++) {
+            let title = response.items[i].volumeInfo.title;
+            let author = response.items[i].volumeInfo.authors[0];
+            let titleElement = document.createElement('li');
+            let titleLink = document.createElement('a');
+            titleLink.setAttribute('title', title);
+            titleLink.innerHTML = title + " - " + author;
+            title = JSON.stringify(title.replace(/ /g, '-'));
+            titleLink.setAttribute('onclick', `fillInSearchBox(${title})`);
+            titleElement.appendChild(titleLink);
+            filterList.appendChild(titleElement);
+        }
+    })
+}
