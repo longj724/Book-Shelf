@@ -121,30 +121,23 @@ function renderBooks(doc, userId) {
 
     let title  = document.createElement('p');
     let author = document.createElement('p');
-    let status = document.createElement('p');
     let cover = document.createElement('img');
 
     title.classList.add('title');
     author.classList.add('author');
-    status.classList.add('author');
     cover.setAttribute('class', 'cover');
     cover.setAttribute('id', doc.id + 1);
 
-    cross.setAttribute('class', 'fas fa-trash')
+    cross.setAttribute('class', 'fas fa-trash');
+    cross.setAttribute('style', 'cursor: pointer;')
     crossBox.appendChild(cross)
-    title.innerHTML = 'Title: ' + doc.data().title;
+    title.innerHTML = doc.data().title;
     author.innerHTML = 'Author: ' + doc.data().author;
-    if (doc.data().status === true) {
-        status.innerHTML = 'Status: Read';
-    } else {
-        status.innerHTML = 'Status: Want to Read';
-    }
 
     loadSymbol.setAttribute('style', 'display: none;')
 
     info.appendChild(title);
     info.appendChild(author);
-    info.appendChild(status);
 
     item.classList.add('item');
     item.setAttribute('data-id', doc.id);
@@ -203,7 +196,7 @@ var ud = userData;
 // Getting the book cover
 function getBookCover(title, imageId) {
     let image = document.getElementById(imageId)
-    fetch('https://www.googleapis.com/books/v1/volumes?q=' + title)
+    fetch('https://www.googleapis.com/books/v1/volumes?q=' + title + '&key=' + apiKey.key)
     .then((response) => {
         return response.json()
     }).then((response) => {
@@ -226,7 +219,7 @@ var titleInput = document.getElementById('title')
 function filterBookSearch() {
     let filter = titleInput.value;
     let filterList = document.getElementById('potential-titles');
-    fetch('https://www.googleapis.com/books/v1/volumes?q=' + filter)
+    fetch('https://www.googleapis.com/books/v1/volumes?q=' + filter + '&key=' + apiKey.key)
     .then((response) => {
         return response.json();
     }).then((response) => {

@@ -239,6 +239,12 @@ b {
   margin-right: auto;
 }
 
+.status-btns {
+  display: inline;
+  font-family: 'Open Sans';
+  font-size: 14px;
+}
+
 /* Drop down search list */
 
 #potential-titles {

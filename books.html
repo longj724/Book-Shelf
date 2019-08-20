@@ -37,8 +37,8 @@
                     <label for="author"><b>Author</b></label>
                     <input id="author" type="text" placeholder="Author" name="author" required><br>
         
-                    <input type="radio" name="status" value="Has Read" required> Has Read<br>
-                    <input type="radio" name="status" value="Want to Read" required> Want to Read<br>
+                    <input type="radio" name="status" value="Has Read" required><p class="status-btns"> Has Read</p><br>
+                    <input type="radio" name="status" value="Want to Read" required><p class="status-btns"> Want to Read</p><br>
                     <button class="add-book-btn">Add</button>
                 </div>
             </form>
@@ -50,5 +50,6 @@
     <h3 class="book-status-header">My Reading List:</h2>
     <div id="container-want-read" class="book-container"></div>
     <div id="loading"></div>
+<script src="js/APIKeys.js"></script>
 <script src="./js/books.js"></script>
 </html>
