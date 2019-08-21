@@ -103,7 +103,7 @@ var bookForm = document.getElementById('add-book-form');
 var addBookBtn = document.querySelector('.add-book-btn');
 
 addBookBtn.addEventListener('click', addBook);
-addBookBtn.addEventListener('click', confirmBookAdded);
+// addBookBtn.addEventListener('click', confirmBookAdded);
 
 // Displaying Books
 function renderBooks(doc, userId) {
@@ -113,47 +113,48 @@ function renderBooks(doc, userId) {
     } else {
         container = document.getElementById('container-want-read')
     }
+
+    // Creating and Retrieving attributes
     let loadSymbol = document.getElementById('loading')
     let item = document.createElement('div');
     let info = document.createElement('div');
-    let crossBox = document.createElement('div')
-    let cross = document.createElement('i');
-
+    let removeBtn = document.createElement('button');
     let title  = document.createElement('p');
     let author = document.createElement('p');
     let cover = document.createElement('img');
 
     title.classList.add('title');
     author.classList.add('author');
-    cover.setAttribute('class', 'cover');
+    cover.classList.add('cover');
     cover.setAttribute('id', doc.id + 1);
+    removeBtn.setAttribute('id', 'remove-btn');
 
-    cross.setAttribute('class', 'fas fa-trash');
-    cross.setAttribute('style', 'cursor: pointer;')
-    crossBox.appendChild(cross)
     title.innerHTML = doc.data().title;
     author.innerHTML = 'Author: ' + doc.data().author;
+    removeBtn.innerHTML = 'Remove Book';
 
     loadSymbol.setAttribute('style', 'display: none;')
 
     info.appendChild(title);
     info.appendChild(author);
 
+    // Appending elements to the container
     item.classList.add('item');
     item.setAttribute('data-id', doc.id);
     item.appendChild(cover);
     item.appendChild(info);
-    item.appendChild(crossBox);
+    item.appendChild(removeBtn);
     container.appendChild(item);
 
     // Add book cover
     getBookCover(doc.data().title, doc.id + 1)
 
     // Deleting data
-    cross.addEventListener('click', (e) => {
+    removeBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        let parentDiv = e.target.parentElement
-        let id = parentDiv.parentElement.getAttribute('data-id');
+        let parentDiv = e.target.parentElement;
+        console.log(parentDiv);
+        let id = parentDiv.getAttribute('data-id');
         db.collection('users').doc(userId).collection('books').doc(id).delete();
     })
 }
@@ -184,8 +185,8 @@ var ud = userData;
                     if (change.type === 'added') {
                         renderBooks(change.doc, result);
                     } else if (change.type === 'removed') {
-                        let container = document.querySelector('.book-container');
                         let deletedBook = document.querySelector('[data-id=' + change.doc.id + ']');
+                        let container = deletedBook.parentElement;
                         container.removeChild(deletedBook);
                     }
                 })
@@ -206,11 +207,16 @@ function getBookCover(title, imageId) {
     })
 }
 
-// Fills in search box once title is selected
-function fillInSearchBox(info) {
-    let searchBox = document.getElementById('title');
-    info = info.replace(/-/g, ' ');
-    searchBox.value = info;
+// Fills in search boxes once title is selected
+function fillInSearchBox(title, author) {
+    let titleSearchBox = document.getElementById('title');
+    title = title.replace(/-/g, ' ');
+    titleSearchBox.value = title;
+
+    let authorSearchBox = document.getElementById('author');
+    author = author.replace(/ /g, ' ');
+    authorSearchBox.value = author;
+
     clearSearchFilter();
 }
 
@@ -232,7 +238,8 @@ function filterBookSearch() {
             titleLink.setAttribute('title', title);
             titleLink.innerHTML = title + " - " + author;
             title = JSON.stringify(title.replace(/ /g, '-'));
-            titleLink.setAttribute('onclick', `fillInSearchBox(${title})`);
+            author = JSON.stringify(author.replace(/ /g, '-'));
+            titleLink.setAttribute('onclick', `fillInSearchBox(${title}, ${author})`);
             titleElement.appendChild(titleLink);
             filterList.appendChild(titleElement);
         }

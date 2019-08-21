@@ -30,12 +30,14 @@
             <form onsubmit='return false;' id="add-book-form">
                 <div class="container">
                     <label for="title"><b>Title</b></label>
-                    <input id="title" type="text" placeholder="Search for book" name="title" onkeyup="filterBookSearch()" required><br>
+                    <input id="title" type="text" placeholder="Search for book" name="title" onkeyup="filterBookSearch()" 
+                        autocomplete="off"
+                    required><br>
                     
                     <ul id="potential-titles"></ul>
         
                     <label for="author"><b>Author</b></label>
-                    <input id="author" type="text" placeholder="Author" name="author" required><br>
+                    <input id="author" type="text" placeholder="Author" name="author"  autocomplete="off" required><br>
         
                     <input type="radio" name="status" value="Has Read" required><p class="status-btns"> Has Read</p><br>
                     <input type="radio" name="status" value="Want to Read" required><p class="status-btns"> Want to Read</p><br>
