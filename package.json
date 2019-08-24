@@ -1,0 +1,28 @@
+{
+  "name": "books",
+  "version": "1.0.0",
+  "description": "",
+  "main": "crawler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/longj724/Book-Shelf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/longj724/Book-Shelf/issues"
+  },
+  "homepage": "https://github.com/longj724/Book-Shelf#readme",
+  "dependencies": {
+    "path": "^0.12.7",
+    "puppeteer": "^1.19.0",
+    "ws": "^7.1.2"
+  },
+  "devDependencies": {
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
+  }
+}
