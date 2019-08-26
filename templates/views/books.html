@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Shelf</title>
+    <link rel="stylesheet" href="../../static/books.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Catamaran' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+    <script src="../../js/firebase.js"></script>
+    <script src="../../js/logout.js"></script>
+</head>
+<body>
+    <div id="nav">
+        <button id="add-book">Add Book</button>
+        <h2 id="my-books">My Books</h2>
+        <button id="logout" onclick="mainApp.logOut()">Sign Out</button>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1 id="modalHeader">Enter Book Information</h1>
+            <hr id="break-line">
+            <form onsubmit='return false;' id="add-book-form">
+                <div class="container">
+                    <label for="title"><b>Title</b></label>
+                    <input id="title" type="text" placeholder="Search for book" name="title" onkeyup="filterBookSearch()" 
+                        autocomplete="off"
+                    required><br>
+                    
+                    <ul id="potential-titles"></ul>
+        
+                    <label for="author"><b>Author</b></label>
+                    <input id="author" type="text" placeholder="Author" name="author"  autocomplete="off" required><br>
+        
+                    <input type="radio" name="status" value="Has Read" required><p class="status-btns"> Has Read</p><br>
+                    <input type="radio" name="status" value="Want to Read" required><p class="status-btns"> Want to Read</p><br>
+                    <button class="add-book-btn">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <h3 class="book-status-header">Books I've Read:</h2>
+    <div id="container-read" class="book-container"></div>
+    <hr>
+    <h3 class="book-status-header">My Reading List:</h2>
+    <div id="container-want-read" class="book-container"></div>
+    <div id="loading"></div>
+<script src="../../js/APIKeys.js"></script>
+<script src="../../js/books.js"></script>
+</html>
