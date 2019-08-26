@@ -203,7 +203,7 @@ function getBookCover(title, imageId) {
     }).then((response) => {
         image.src = response.items[0].volumeInfo.imageLinks.thumbnail
     }).catch((error) => {
-        image.src = './static/images/book-img.jpg'
+        image.src = '/images/book-img.jpg'
     })
 }
 
