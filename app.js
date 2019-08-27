@@ -30,4 +30,16 @@ app.get('/books', (req, res) => {
     res.render('books')
 })
 
+app.get('/book-info/:title', (req, res) => {
+    crawler.getStatus(req.params.title).then((response) => response)
+    .then((response) => {
+        return response
+    }).then((response) => {
+        res.render('book-info', {
+        info: response,
+        name: 'Justin'
+        })
+    })
+})
+
 app.listen(3000, () => console.log('Listening on port 3000'));

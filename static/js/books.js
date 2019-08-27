@@ -144,6 +144,9 @@ function renderBooks(doc, userId) {
     item.appendChild(cover);
     item.appendChild(info);
     item.appendChild(removeBtn);
+    item.addEventListener('click', () => {
+        location.href='book-info/' + doc.data().title;
+    })
     container.appendChild(item);
 
     // Add book cover
@@ -203,7 +206,7 @@ function getBookCover(title, imageId) {
     }).then((response) => {
         image.src = response.items[0].volumeInfo.imageLinks.thumbnail
     }).catch((error) => {
-        image.src = '/images/book-img.jpg'
+        image.src = '../images/book-img.jpg'
     })
 }
 
