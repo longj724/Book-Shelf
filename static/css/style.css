@@ -1,5 +1,5 @@
 body {
-    background-color:#e62739; 
+    background-color:#4285F4; 
     text-align: center;
     display: grid;
 }
@@ -17,7 +17,7 @@ body {
 }
 
 #book-logo {
-    color: #6ed3cf;
+    color: #EDBD3E;
     
 }
 
@@ -33,23 +33,23 @@ body {
 a.button1 {
     display:inline-block;
     padding:0.35em 1.2em;
-    border:0.1em solid #4740C4;
+    border:0.1em solid #ffffff;
     margin:0 0.3em 0.3em 0;
     border-radius: 5px;
     box-sizing: border-box;
     text-decoration:none;
     font-family:'Roboto',sans-serif;
     font-weight:300;
-    color: #FFFFFF;
-    background-color: #4740C4;
+    color: #000000;
+    background-color: #FFFFFF;
     text-align:center;
     transition: all 0.2s;
     margin-top: 15px;
 }
 a.button1:hover{
-    color: #4740C4;
-    background-color:#FFFFFF;
-    border-color: #ffffff;
+    color: #000000;
+    background-color:#D0D8DD;
+    border-color: #D0D8DD;
 }
 
 @media all and (max-width:30em) {
