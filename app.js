@@ -37,7 +37,6 @@ app.get('/book-info/:title', (req, res) => {
     }).then((response) => {
         res.render('book-info', {
         info: response,
-        name: 'Justin'
         })
     })
 })

@@ -19,15 +19,11 @@ async function getStatus(title) {
         booksWithTitle[0].click();
         await page.waitForSelector('.availability', {timeout: 5000});
         let response = await page.$eval('.availabilityText', text => text.innerHTML);
-        response = response.replace(/\s/g, '');
+        response = response.replace('<i class="icon-copies"></i>', '');
         return response
     } catch {
         return 'Could not locate book rental information'
     }
 }
 
-function add() {
-    return 1 + 1;
-}
-
-module.exports = { getStatus, add };
+module.exports = { getStatus };
