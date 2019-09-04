@@ -36,7 +36,7 @@ app.get('/book-info/:title', (req, res) => {
         return response
     }).then((response) => {
         res.render('book-info', {
-        info: response,
+        status: response,
         })
     })
 })

@@ -12,10 +12,16 @@
 </head>
 <body>
     <div id="nav">
+        <button id="home">Home</button>
         <h2 id="my-books">My Books</h2>
     </div>
-    <div>
-        <p>Brecksville Library Rental Status: {{ info }}</p>
+    <div id="book-container">
+
     </div>
+    <div id="info-container">
+        <p id="library-status">Library Rental Status: {{ status }}</p>
+    </div>
+    <script src="/js/APIKeys.js"></script>
+    <script src="/js/book-info.js"></script>
 </body>
 </html>
